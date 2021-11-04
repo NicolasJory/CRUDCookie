@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Hello CookieController!{% endblock %}
+
+{% block body %}
+<h1>Liste des cookies</h1>
+<p><a href="{{ path('add_cookie') }}">Ajouter un type de cookie</a></p>
+{% for cookie in cookies %}
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </thead>
+        <tbody>
+            <td>{{ cookie.id }}</td>
+            <td><a href="{{ path('cookie', {'id': cookie.id}) }}">{{ cookie.name }}</a></td>
+            <td>{{ cookie.price }}</td>
+            <td>{{ cookie.quantity }}</td>
+            <td><a href="{{ path('modify_cookie', {'id': cookie.id}) }}">Modifier</a></td>
+            <td><a href="{{ path('delete_cookie', {'id': cookie.id}) }}">Supprimer</a></td>
+        </tbody>
+    </table>
+{% endfor %}
+{% endblock %}
